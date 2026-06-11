@@ -4,9 +4,31 @@
  * @returns {number}
  */
 function findMax(arr) {
-  if (arr.length <= 0) throw new Error('Array cannot be empty');
+  if (arr === undefined) {
+    throw new Error('Array cannot be undefined');
 
-  return arr[0];
+  }
+
+  if(!Array.isArray(arr)) {
+    throw new Error ('Argument must be an array');
+
+  }
+
+  if (arr.length === 0) {
+    throw new Error ('Array cannot be empty');
+  }
+  let max = arr[0];
+
+  for (let i = 0; i < arr.length; i++){
+    if (typeof arr[i] !== 'number') {
+      throw new Error('Array can only contain numbers');
+
+    }
+    if (arr[i] > max) {
+      max = arr[i];
+
+    }
+  }
+  return max;
 }
-
 module.exports = findMax;
