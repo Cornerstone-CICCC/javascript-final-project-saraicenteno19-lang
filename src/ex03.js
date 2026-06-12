@@ -4,13 +4,28 @@
  * @returns {number}
  */
 function calculateFactorial(number) {
-  let result = 1;
+  if (number === undefined) {
+    throw new Error('Number cannot be undefined');
 
-  for (let current = 1; current <= number; current += 1) {
-    result *= current;
   }
+  if (typeof number !== 'number') {
+    throw new Error('Argument must be a number');
 
-  return result;
+  }
+  if (number < 0) {
+    throw new Error('Number cannot be negative');
+  }
+  if (!Number.isInteger(number)) {
+    throw new Error('Number must be an integer');
+
+  }
+  let result = 1;
+  for (let current = 1; current <= number; current += 1) {
+    result *= current; 
+  }
+return result;
+
+
 }
 
 module.exports = calculateFactorial;
